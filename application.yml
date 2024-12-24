@@ -1,11 +1,18 @@
 server: # REST and WS server
-  port: 2333
+  port: 8888
   address: 0.0.0.0
+  http2:
+    enabled: false # Whether to enable HTTP/2 support
+
+plugins:
+  # Adding YouTube plugin as per new recommendations
+  - dependency: "dev.arbjerg.lavalink-plugins:youtube-source-plugin:1.11.2" # Plugin coordinates for YouTube
+    repository: "https://maven.arbjerg.dev/releases" # Repository for the YouTube plugin
 lavalink:
   server:
-    password: "coders"
+    password: "youshallnotpass"
     sources:
-      youtube: true
+      youtube: false
       bandcamp: true
       soundcloud: true
       twitch: true
@@ -21,11 +28,11 @@ lavalink:
     soundcloudSearchEnabled: true
     gc-warnings: true
     #ratelimit:
-      #ipBlocks: ["1.0.0.0/8", "..."] # list of ip blocks
-      #excludedIps: ["...", "..."] # ips which should be explicit excluded from usage by lavalink
-      #strategy: "RotateOnBan" # RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch
-      #searchTriggersFail: true # Whether a search 429 should trigger marking the ip as failing
-      #retryLimit: -1 # -1 = use default lavaplayer value | 0 = infinity | >0 = retry will happen this numbers times
+    #ipBlocks: ["1.0.0.0/8", "..."] # list of ip blocks
+    #excludedIps: ["...", "..."] # ips which should be explicit excluded from usage by lavalink
+    #strategy: "RotateOnBan" # RotateOnBan | LoadBalance | NanoSwitch | RotatingNanoSwitch
+    #searchTriggersFail: true # Whether a search 429 should trigger marking the ip as failing
+    #retryLimit: -1 # -1 = use default lavaplayer value | 0 = infinity | >0 = retry will happen this numbers times
 
 metrics:
   prometheus:
